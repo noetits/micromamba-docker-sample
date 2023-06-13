@@ -2,4 +2,7 @@ version: '3'
 services:
   app:
     build: ./
+    volumes:
+      # Just specify a path and let the Engine create a volume
+      - ./:/home/mambauser/code
     container_name: app
