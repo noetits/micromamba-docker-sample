@@ -20,4 +20,4 @@ jobs:
         COMPOSE_INTERACTIVE_NO_CLI: 1
       run: |
             # docker compose exec app /bin/bash -c -i touch a.txt
-            docker compose exec app /bin/bash -c -i "curl https://google.com/ -o test.txt"
+            docker compose exec app /bin/bash -c -i "curl https://google.com/ -o files/test.txt"
