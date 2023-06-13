@@ -1,5 +1,5 @@
 version: '3'
 services:
-  flaskapp:
+  app:
     build: ./
     container_name: app
