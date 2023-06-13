@@ -6,7 +6,6 @@ RUN	apt-get update && apt-get install --no-install-recommends -y \
     curl \
     # clean up apt cache to save space
     && rm -rf /var/lib/apt/lists/* \
-    && git lfs install
 USER mambauser
 COPY --chown=$MAMBA_USER:$MAMBA_USER env.yaml /tmp/env.yaml
 RUN micromamba install -y -n base -f /tmp/env.yaml && \
