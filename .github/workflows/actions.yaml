@@ -32,18 +32,18 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-docker-
 
-    - name: docker compose up
-      env:
-        COMPOSE_INTERACTIVE_NO_CLI: 1
-      run: docker compose up -d
-    - name: Check running containers
-      run: docker compose ps -a
-    - name: Check logs
-      run: docker compose logs app
-    - name: Test curl
-      env:
-        COMPOSE_INTERACTIVE_NO_CLI: 1
-      run: |
-            # docker compose exec app /bin/bash -c -i touch a.txt
-            docker compose exec app /bin/bash -c -i "ls"
-            docker compose exec app /bin/bash -c -i "curl https://google.com/ -o files/test.txt"
+      - name: docker compose up
+        env:
+          COMPOSE_INTERACTIVE_NO_CLI: 1
+        run: docker compose up -d
+      - name: Check running containers
+        run: docker compose ps -a
+      - name: Check logs
+        run: docker compose logs app
+      - name: Test curl
+        env:
+          COMPOSE_INTERACTIVE_NO_CLI: 1
+        run: |
+              # docker compose exec app /bin/bash -c -i touch a.txt
+              docker compose exec app /bin/bash -c -i "ls"
+              docker compose exec app /bin/bash -c -i "curl https://google.com/ -o files/test.txt"
