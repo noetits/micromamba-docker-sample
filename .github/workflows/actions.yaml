@@ -7,31 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repository
-        uses: actions/checkout@v2
-
-      - name: Cache Docker Layers
-        id: cache
-        uses: actions/cache@v2
-        with:
-          path: |
-            ~/.docker
-          key: ${{ runner.os }}-docker-${{ hashFiles('**/docker-compose.yml') }}
-
-      - name: Build Docker Compose
-        run: |
-          docker-compose build
-          # Add any other necessary steps (e.g., tests, linting, etc.)
-
-      - name: Save Docker Layers to Cache
-        id: save-cache
-        uses: actions/cache@v2
-        with:
-          path: |
-            ~/.docker
-          key: ${{ runner.os }}-docker-${{ hashFiles('**/docker-compose.yml') }}
-          restore-keys: |
-            ${{ runner.os }}-docker-
-
+        uses: actions/checkout@v3
       - name: docker compose up
         env:
           COMPOSE_INTERACTIVE_NO_CLI: 1
